@@ -18,8 +18,8 @@ namespace WebApplication1.Controllers
         //    _logger = logger;
         //}
 
-        public String  Index() {
-            return "HelloWorld";
+        public ViewResult  Index() {
+            return View("HelloWorld");
         }
 
         //public IActionResult Privacy() {
