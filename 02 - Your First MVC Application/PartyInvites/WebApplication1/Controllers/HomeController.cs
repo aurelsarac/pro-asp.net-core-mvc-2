@@ -7,10 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebApplication1.Models;
 
-namespace WebApplication1.Controllers
-{
-    public class HomeController : Controller
-    {
+namespace WebApplication1.Controllers {
+    public class HomeController : Controller {
 
         //private readonly ILogger<HomeController> _logger;
 
@@ -18,8 +16,9 @@ namespace WebApplication1.Controllers
         //    _logger = logger;
         //}
 
-        public ViewResult  Index() {
-            return View("HelloWorld");
+        public ViewResult Index() {
+            ViewBag.Greeting = DateTime.Now.Hour < 12 ? "Good Morning" : "Good Afternoon";
+            return View("MyView");
         }
 
         //public IActionResult Privacy() {
