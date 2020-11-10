@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using PartyInvites.Models;
 using WebApplication1.Models;
+using System.Linq;
 
 namespace WebApplication1.Controllers {
     public class HomeController : Controller {
@@ -19,6 +16,27 @@ namespace WebApplication1.Controllers {
         public ViewResult Index() {
             ViewBag.Greeting = DateTime.Now.Hour < 12 ? "Good Morning" : "Good Afternoon";
             return View("MyView");
+        }
+        
+        [HttpGet]
+        public ViewResult RsvpForm() {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ViewResult RsvpForm(GuestResponse guestResponse) {
+            if (ModelState.IsValid) {
+                Repository.AddResponse(guestResponse);
+                return View("Thanks", guestResponse);
+            } else {
+                // there is a validation error
+                return View();
+            }
+        }
+
+        public ViewResult ListResponses() {
+            return View(Repository.Responses.Where(r => r.WillAttend == true));
         }
 
         //public IActionResult Privacy() {

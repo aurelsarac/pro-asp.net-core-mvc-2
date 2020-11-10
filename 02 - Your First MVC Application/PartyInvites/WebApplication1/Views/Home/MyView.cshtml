@@ -4,12 +4,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
 </head>
 <body>
-    <div>
-        @ViewBag.Greeting (from the MyRazorView)
+    <div class="text-center" style="padding-top:100px">
+       
+
+        <h3>@ViewBag.Greeting (from the MyRazorView)</h3>
+        <p>
+            <h3>We're going to have an exciting party.</h3>
+            <h4>And you are invited</h4>
+        </p>
+        <a class="btn btn-primary" asp-action="RsvpForm">RSVP Now</a>
     </div>
 </body>
 </html>
